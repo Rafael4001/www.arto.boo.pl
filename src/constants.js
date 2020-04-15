@@ -12,6 +12,8 @@ export const LUBLIN_MAP = '../static/image/WojLubelskie.jpg';
 export const PHOTO_CARD_IMAGE ='../static/image/GalleryCardPhoto.jpeg';
 export const VIDEO_CARD_IMAGE ='../static/image/videoCardPhoto.jpeg';
 
+export const REPERTOIRE_ARTO ='../static/filesToDownload/RepertuarArto2020.pdf';
+
 export const FAVICON = {
     appleTouch : '../static/image/favicon_io/apple-touch-icon.png',
     favicon16x16 : '../static/image/favicon_io/favicon-16x16.png',
@@ -89,11 +91,11 @@ export const LINKS = {
 export const MENU_ITEMS = [
     {name: HOME, link: LINKS.HOME.HREF, as: LINKS.HOME.AS},
     {name: DEMO, link: LINKS.DEMO.HREF, as: LINKS.DEMO.AS},
+    {name: MEDIA, link: LINKS.MEDIA.HREF, as: LINKS.MEDIA.AS},
+    {name: KONTAKT, link: LINKS.CONTACT.HREF, as: LINKS.CONTACT.AS},
     // {name: PHOTO, link: './photo'},
-    // {name: MEDIA, link: LINKS.MEDIA},
     // {name: OFERTA, link: './oferta'},
     // {name: KALENDARZ, link: './kalendarz'},
-    {name: KONTAKT, link: LINKS.CONTACT.HREF, as: LINKS.CONTACT.AS},
 ];
 
 
