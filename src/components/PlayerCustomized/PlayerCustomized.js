@@ -9,6 +9,7 @@ import AlbumIcon from '@material-ui/icons/Album';
 import Image from "../Image";
 import { Typography } from "@material-ui/core";
 import { TRACK_LIST } from "../../trackList";
+import HomepageMainPhoto from "../HomepageMainPhoto/HomepageMainPhoto";
 
 
 const {
@@ -140,10 +141,11 @@ class PlayerCustomized extends Component {
 
     return (
       <Media ref={c => (this.media = c)}>
-        <div>
+        <div className={classes.positionAbsoluteWrapper}>
           <div className={classes.mainContainer}>
             <div className={classes.albumImageContainer}>
-              <Typography className={classes.currentSong}>{this.state.actualSongName ? this.state.actualSongName : 'Wybierz utwor'}</Typography>
+              <Typography
+                className={classes.currentSong}>{this.state.actualSongName ? this.state.actualSongName : 'Wybierz utwor'}</Typography>
               <PlayPause/>
               <div className={classes.seekBarContainer}>
                 <div className={classes.playerTime}><CurrentTime/>/<Duration/></div>
@@ -165,7 +167,6 @@ class PlayerCustomized extends Component {
             <div className={classes.trackListContainer}>
               {this.trackList()}
             </div>
-
           </div>
         </div>
       </Media>
@@ -173,5 +174,7 @@ class PlayerCustomized extends Component {
     )
   }
 }
+
+PlayerCustomized.displayName = 'PlayerCustomized';
 
 export default PlayerCustomized

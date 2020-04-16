@@ -9,7 +9,6 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: theme.palette.common.white,
-    paddingTop: '6rem',
 
     [theme.breakpoints.down('sm')]: {
       paddingTop: '3rem',
