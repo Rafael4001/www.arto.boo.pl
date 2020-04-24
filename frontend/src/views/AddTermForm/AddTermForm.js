@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
-import { Formik } from 'formik';
 import axios from 'axios';
-
-import { validationSchemaYup } from './AddTermValidation'
+import { Formik } from 'formik';
 
 import Error from '../../components/Error'
+
+import { validationSchemaYup } from './AddTermValidation'
+import { createReservation, deleteReservation } from './AddTermFormServices'
+
 import { API_URL } from "../../config";
+
 import { STATUS_SELECT } from "../../constants";
 
 // instructions
@@ -22,38 +25,21 @@ const AddTermForm = ({classes}) => {
       })
   )
 
-  const createReservation = async (values) => {
-    const {
-      weddingDate,
-      weddingAddress,
-      weddingHotelName,
-      weddingHotelAddress,
-      weddingStatus,
-      weddingAdditionalDetails,
-    } = values
-
-    await axios.post(API_URL,
-      {
-        weddingDate,
-        weddingAddress,
-        weddingHotelName,
-        weddingHotelAddress,
-        weddingStatus,
-        weddingAdditionalDetails,
-      }
-    );
-    getReservations();
-  }
-
   useEffect(() => {
     getReservations()
   }, []);
 
-  // console.log('data', data)
-
-  const onSubmit = (values) => {
-    createReservation(values)
+  const onSubmit = async (values) => {
+    await createReservation(values)
+    await getReservations();
   }
+
+  const onDeleteReservation = async (id) => {
+    //TODO dodac confirm Dialog
+    await deleteReservation(id)
+    await getReservations();
+  }
+
 
   const initialValues = {
     weddingDate: "",
@@ -193,16 +179,17 @@ const AddTermForm = ({classes}) => {
 
 
       -----------------------------------------
-      {data.map(item => (
-        <div key={item._id}>{item.title}</div>
+      {data.map((item, id) => (
+        <ul key={item._id}>
+          <li>{id + 1}</li>
+          <li>{item.weddingDate}</li>
+          <li>{item.weddingAddress}</li>
+          {item.weddingHotelAddress && <li>{item.weddingHotelAddress}</li>}
+          <li>{item.weddingHotelName}</li>
+          <li>{item.weddingStatus}</li>
+          <button onClick={()=>onDeleteReservation(item._id)}>USUN</button>
+        </ul>
       ))}
-
-
-      {/*<button*/}
-      {/*  onClick={getReservations}*/}
-      {/*>pobierz*/}
-      {/*</button>*/}
-
     </>
   )
 }
