@@ -6,7 +6,7 @@ import { Formik } from 'formik';
 import Error from '../../components/Error'
 
 import { validationSchemaYup } from './AddTermValidation'
-import { createReservation, deleteReservation } from './AddTermFormServices'
+import { createReservation, deleteReservation } from '../../services/reservationsService'
 
 import { API_URL } from "../../config";
 
@@ -39,6 +39,8 @@ const AddTermForm = ({classes}) => {
     await deleteReservation(id)
     await getReservations();
   }
+
+  //TODO dodać edycję wydarzenia
 
 
   const initialValues = {
@@ -187,7 +189,7 @@ const AddTermForm = ({classes}) => {
           {item.weddingHotelAddress && <li>{item.weddingHotelAddress}</li>}
           <li>{item.weddingHotelName}</li>
           <li>{item.weddingStatus}</li>
-          <button onClick={()=>onDeleteReservation(item._id)}>USUN</button>
+          <button onClick={() => onDeleteReservation(item._id)}>USUN</button>
         </ul>
       ))}
     </>

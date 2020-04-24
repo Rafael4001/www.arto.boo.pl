@@ -1,8 +1,17 @@
 import axios from "axios";
-import { API_URL } from "../../config";
+import { API_URL } from "../config";
 
 
 // dodac try catch
+
+export const getReservations = async () => {
+  try {
+    const response = await axios.get(API_URL);
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export const createReservation = async (values) => {
   const {
