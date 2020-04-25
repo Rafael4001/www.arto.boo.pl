@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import moment from 'moment'
+
 import AppBar from '@material-ui/core/AppBar';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
-
-import moment from 'moment'
-
-import { YEAR_2020 } from '../../termsJSON/terminy2020';
-import { YEAR_2021 } from '../../termsJSON/terminy2021';
-import { YEAR_2022 } from '../../termsJSON/terminy2022';
 
 import Months from "../../components/Months";
 import TabPanel from "./TabPanel";
 import { getReservations } from '../../services/reservationsService'
 import { getWeddingWithStatus } from './../../utilities'
+// import { getWeddingWithStatus } from './../../'
 
 import { STATUS } from "../../constants";
 

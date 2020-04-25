@@ -9,7 +9,6 @@ import { validationSchemaYup } from './AddTermValidation'
 import { createReservation, deleteReservation } from '../../services/reservationsService'
 
 import { API_URL } from "../../config";
-
 import { STATUS_SELECT } from "../../constants";
 
 // instructions

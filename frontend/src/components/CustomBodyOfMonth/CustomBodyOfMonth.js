@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import moment from 'moment'
+import PropTypes from "prop-types";
 
 import Typography from '@material-ui/core/Typography';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
@@ -12,19 +13,21 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Collapse from '@material-ui/core/Collapse';
 
+import {deleteReservation}from '../../services/reservationsService'
+
 import { STATUS, WEEK_DAYS } from '../../constants'
-import PropTypes from "prop-types";
 
 
 const CustomBodyOfMonth = ({
                              classes,
-
                              weddingDate,
                              weddingStatus,
                              weddingAddress,
                              weddingHotelName,
                              weddingAdditionalDetails,
+                             _id,
                            }) => {
+
   const classNameMain = classNames(classes.main, {
       [classes.busy]: weddingStatus === STATUS.BUSY,
       [classes.holiday]: weddingStatus === STATUS.HOLIDAY,
@@ -33,7 +36,7 @@ const CustomBodyOfMonth = ({
     }
   );
 
-  const getView = (status) => {
+  const getView = ({status, weddingAddress}) => {
     switch (status) {
       case STATUS.BUSY:
         return (<div className={classNames(classes.info, classes.infoBusy,)}>{weddingAddress}</div>);
@@ -91,7 +94,8 @@ const CustomBodyOfMonth = ({
             information: weddingAdditionalDetails
           })}
         </div>
-        <div className={classes.statusContainer}>{getView(weddingStatus)}</div>
+        <div className={classes.statusContainer}>{getView({status: weddingStatus, weddingAddress})}</div>
+        <button onClick={()=>deleteReservation(_id)}>usuń</button>
       </div>
     </div>
   );
