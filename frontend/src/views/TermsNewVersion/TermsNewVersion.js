@@ -8,16 +8,11 @@ import Tabs from '@material-ui/core/Tabs';
 
 import Months from "../../components/Months";
 import TabPanel from "./TabPanel";
-import { getReservations } from '../../services/reservationsService'
+import { deleteReservation, getReservations } from '../../services/reservationsService'
 import { getWeddingWithStatus } from './../../utilities'
-// import { getWeddingWithStatus } from './../../'
 
-import { STATUS } from "../../constants";
+import { STATUS, YEARS_TODO } from "../../constants";
 
-
-const YEAR_2020_TITLE_TEXT = {title: "2020", year: "2020"};
-const YEAR_2021_TITLE_TEXT = {title: "2021", year: "2021"};
-const YEAR_2022_TITLE_TEXT = {title: "2022", year: "2022"};
 
 function a11yProps(index) {
   return {
@@ -34,43 +29,42 @@ class TermsNewVersion extends Component {
   state = {
     value: 0,
     data: [],
+    passCustom: '',
   };
 
-  async componentDidMount() {
+  loadDate = async () => {
     const {data} = await getReservations();
     this.setState({
       data
     })
   }
 
+  async componentDidMount() {
+    this.loadDate()
+  }
+
   handleChange = (event, newValue) => {
     this.setState({value: newValue})
+  };
+
+  onDeleteTerm = async (id) => {
+    await deleteReservation(id);
+    await this.loadDate()
   };
 
 
   render() {
     const {classes} = this.props;
-    const {value, data} = this.state;
-    const years = [
+    const {value, data, passCustom} = this.state;
+    const years = YEARS_TODO.map((year) => (
       {
-        name: YEAR_2020_TITLE_TEXT.title,
+        name: year.title,
         details: data.filter(function (element) {
-          return getYearWeddings(element, YEAR_2020_TITLE_TEXT.year)
+          return getYearWeddings(element, year.year)
         }),
-      },
-      {
-        name: YEAR_2021_TITLE_TEXT.title,
-        details: data.filter(function (element) {
-          return getYearWeddings(element, YEAR_2021_TITLE_TEXT.year)
-        }),
-      },
-      {
-        name: YEAR_2022_TITLE_TEXT.title,
-        details: data.filter(function (element) {
-          return getYearWeddings(element, YEAR_2022_TITLE_TEXT.year)
-        }),
-      },
-    ];
+      }
+    ))
+
     const getWeddingsYearAmount = (yearDetails) => {
 
       const weddingsAmount = yearDetails.filter(function (element) {
@@ -80,7 +74,10 @@ class TermsNewVersion extends Component {
       return weddingsAmount.length
     };
 
-    return (
+
+
+
+    const getContent=()=>(
       <div className={classes.root}>
         <AppBar position="fixed">
           <Tabs value={value} onChange={this.handleChange} aria-label="simple tabs example">
@@ -99,12 +96,29 @@ class TermsNewVersion extends Component {
 
           return (
             <TabPanel key={id} value={value} index={id}>
-              <Months terms={year.details} weddingAmount={weddingAmount}/>
+              <Months onDeleteTerm={this.onDeleteTerm} terms={year.details} weddingAmount={weddingAmount}/>
             </TabPanel>
           )
         })}
       </div>
     )
+
+    //comment line below to make a verification
+    return (getContent())
+
+    if (passCustom === "dupa") {
+      return (getContent())
+    } else {
+      return <div>
+        Nie masz dostępu
+
+        <input
+          type={"text"}
+          value={this.state.passCustom}
+          onChange={(event) => this.setState({passCustom: event.target.value})}
+        />
+      </div>
+    }
   }
 };
 

@@ -19,6 +19,8 @@ export const FAVICON = {
   safari: '../static/image/favicon_io/safari-pinned-tab.svg',
 }
 
+export const DATE_FORMAT = 'DD-MM-YYYY';
+
 //making icons as font https://icomoon.io/app/#/select
 
 
@@ -173,3 +175,10 @@ export const MONTHS_TABLE = [
   {name: "november", label: MONTHS_PL.NOVEMBER},
   {name: "december", label: MONTHS_PL.DECEMBER},
 ];
+
+
+export const YEARS_TODO = [
+  {title: "2020", year: "2020"},
+  {title: "2021", year: "2021"},
+  {title: "2022", year: "2022"}
+]

@@ -16,9 +16,9 @@ const Months = (props) => {
   const {classes, terms, weddingAmount} = props;
 
   const getMonthsDays = (terms) => {
-    console.log('getMonthsDays terms',terms)
+    // console.log('getMonthsDays terms',terms)
     return(
-      terms.map((day) => <CustomBodyOfMonth key={day._id} {...day} />)
+      terms.map((day) => <CustomBodyOfMonth onDeleteTerm={props.onDeleteTerm} key={day._id} {...day} />)
     )
   };
 
@@ -121,6 +121,7 @@ const Months = (props) => {
 Months.propTypes = {
   classes: PropTypes.object.isRequired,
   terms: PropTypes.array.isRequired,
+  onDeleteTerm: PropTypes.func.isRequired,
 };
 
 Months.displayName = 'Months';
