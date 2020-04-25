@@ -50,7 +50,7 @@ const FormikDateField = (props) => {
       <MuiPickersUtilsProvider utils={MomentFnsUtils} moment={moment}>
         <KeyboardDatePicker
           name={name}
-          value={value[name]}
+          value={value}
           cancelLabel="Anuluj"
           disabled={disabled}
           // disableOpenOnEnter
