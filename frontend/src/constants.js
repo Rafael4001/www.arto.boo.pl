@@ -133,3 +133,34 @@ export const WEEK_DAY = {
   SATUDRAY: "sobota",
   SUNDAY: "niedziela",
 };
+
+export const MONTHS_PL = {
+  JANUARY: "Styczeń",
+  FEBRUARY: "Luty",
+  MARCH: "Marzec",
+  APRIL: "Kwiecień",
+  MAY: "Maj",
+  JUNE: "Czerwiec",
+  JULY: "Lipiec",
+  AUGUST: "Sierpień",
+  SEPTEMBER: "Wrzesień",
+  OCTOBER: "Październik",
+  NOVEMBER: "Listopad",
+  DECEMBER: "Grudzień",
+};
+
+export const MONTHS_TABLE = [
+  {name: "january", label: MONTHS_PL.JANUARY, number: '01'},
+  {name: "february", label: MONTHS_PL.FEBRUARY},
+  {name: "march", label: MONTHS_PL.MARCH},
+  {name: "april", label: MONTHS_PL.APRIL},
+  {name: "may", label: MONTHS_PL.MAY},
+  {name: "june", label: MONTHS_PL.JUNE},
+  {name: "july", label: MONTHS_PL.JULY},
+  {name: "august", label: MONTHS_PL.AUGUST},
+  {name: "september", label: MONTHS_PL.SEPTEMBER},
+  {name: "october", label: MONTHS_PL.OCTOBER},
+  {name: "november", label: MONTHS_PL.NOVEMBER},
+  {name: "december", label: MONTHS_PL.DECEMBER},
+];
+
