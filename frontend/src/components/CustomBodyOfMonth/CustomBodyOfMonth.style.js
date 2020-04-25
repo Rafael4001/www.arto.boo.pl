@@ -15,26 +15,22 @@ const styles = (theme) => ({
     paddingRight: '0.5rem',
     fontSize: '1.5rem',
   },
-
   day: {
   },
-
   busy: {
     backgroundColor: 'rgba(77,184,74,0.43)',
   },
-
   emptyContainer: {},
-
   holiday: {
     backgroundColor: '#5bc0de',
     color: 'white',
   },
-
-
   infoEmpty: {
     backgroundColor: '#ff747e',
   },
-
+  reservation: {
+    backgroundColor: '#6aada6',
+  },
   info: {
     fontSize: '0.9rem',
     borderRadius: '0.5rem',
