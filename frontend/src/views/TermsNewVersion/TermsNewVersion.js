@@ -83,8 +83,6 @@ class TermsNewVersion extends Component {
       return weddingsAmount.length
     };
 
-    console.log('this.state.data', this.state.data)
-
     return (
       <div className={classes.root}>
         <AppBar position="fixed">

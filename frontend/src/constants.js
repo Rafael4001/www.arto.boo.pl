@@ -134,6 +134,16 @@ export const WEEK_DAY = {
   SUNDAY: "niedziela",
 };
 
+export const WEEK_DAYS= {
+  0: 'Niedziela',
+  1: 'Poniedziałek',
+  2: 'Wtorek',
+  3: 'Środa',
+  4: 'Czwartek',
+  5: 'Piątek',
+  6: 'Sobota',
+}
+
 export const MONTHS_PL = {
   JANUARY: "Styczeń",
   FEBRUARY: "Luty",
@@ -163,4 +173,3 @@ export const MONTHS_TABLE = [
   {name: "november", label: MONTHS_PL.NOVEMBER},
   {name: "december", label: MONTHS_PL.DECEMBER},
 ];
-

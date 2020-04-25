@@ -55,6 +55,11 @@ const styles = (theme) => ({
     color: 'black'
   },
 
+  infoReservation: {
+    backgroundColor: '#8ba598',
+    color: 'black'
+  },
+
   details: {
     fontSize: '0.7rem',
     margin: '0.2rem',

@@ -12,19 +12,14 @@ import TermsNewVersion from "../../views/TermsNewVersion/TermsNewVersion";
 import { getWeddingWithStatus } from "../../utilities";
 
 
-const howMuchTermsWithStatus = (element, status) => {
-  return element.status === status;
-};
-
 const Months = (props) => {
   const {classes, terms, weddingAmount} = props;
 
-  const getMonthsDays = (days) => (
-    days.map((day) => <CustomBodyOfMonth key={day.day} {...day} />)
-  );
-
-  const getMonthWeddings = (date, monthNumber) => {
-    return moment(date).format("MM") === monthNumber;
+  const getMonthsDays = (terms) => {
+    console.log('getMonthsDays terms',terms)
+    return(
+      terms.map((day) => <CustomBodyOfMonth key={day._id} {...day} />)
+    )
   };
 
   const getYearTermsSortedByMonth = (terms) => {
@@ -94,8 +89,6 @@ const Months = (props) => {
     const yearSortedByMonth = getYearTermsSortedByMonth(terms);
 
     const months = yearSortedByMonth.map((month, id) => {
-      console.log('month', month)
-
       const weddingsAmount = month.terms.filter(function (term) {
         return getWeddingWithStatus(term, STATUS.BUSY)
       })
@@ -108,7 +101,7 @@ const Months = (props) => {
             <Typography className={classes.monthName}>{month.name}</Typography>
             <Typography className={classes.weddingsAmount}> ({weddingsAmount.length})</Typography>
           </div>
-          {/*{getMonthsDays(month.days)}*/}
+          {getMonthsDays(month.terms)}
         </li>
       )
     })
